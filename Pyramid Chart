@@ -1,7 +1,7 @@
 
 <label id="lblsnapshot" style="font-size:20px;color:black;display:none">NO DATA</label>
 <div class='elx-datahtml-script'>
-	var parent = $("#"+viewId);
+  var parent = $("#"+viewId);
   var data = parent.data("data");
   var title = 'Snapshot Details';
   var view = elx.host.getViewById(view.id);
