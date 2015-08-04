@@ -1,0 +1,71 @@
+<div class='elx-datahtml-script'>
+	var parent = $("#"+viewId);
+    var data = parent.data("data");
+    
+      var processedArr =[];
+      var requiredData =[];
+      var requiredMonthData =[];
+      var sumNewCitizen = 0;
+      var sumResident = 0;
+      var sumPR = 0;
+      var sumP1 = 0;
+      var sumP2 = 0;
+      var sumQ1 = 0;
+      var sumothers = 0;
+  
+      var currentdate = new Date();
+      var currentmonth = currentdate.getMonth() + 1 ;
+      var currentYear = currentdate.getFullYear();
+      var monthNames = ["","January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  
+  if(data != null){   
+  data.forEach(function (d){
+  processedArr.push({
+  "Month" : d["s_citizen_summary.month"],
+  "PR": d["s_citizen_summary.pr_count"],
+  "NewCitizen":d["s_citizen_summary.nc_count"],
+  "Resident":d["s_citizen_summary.resident_count"],
+  "P1":d["s_citizen_summary.pep_p1_count"],
+  "P2":d["s_citizen_summary.pep_p2_count"],
+  "Q1":d["s_citizen_summary.pep_q1_count"],
+  "Others":d["s_citizen_summary.pep_others_count"],
+  "Year":d["s_citizen_summary.year"]
+  });})
+  
+  
+
+   requiredMonthData =    _.where(processedArr, {"Month":((currentmonth))});
+   requiredData =  _.where(requiredMonthData, {"Year":(String(currentYear))});
+  
+ 
+for (var i in requiredData){
+   sumNewCitizen += parseInt(requiredData[i].NewCitizen);
+   sumResident += parseInt(requiredData[i].Resident);
+   sumPR += parseInt(requiredData[i].PR);
+   sumP1 += parseInt(requiredData[i].P1);
+   sumP2 += parseInt(requiredData[i].P2);
+   sumQ1 += parseInt(requiredData[i].Q1);
+   sumothers += parseInt(requiredData[i].Others);
+}
+  
+  
+  
+  var drilldownSeries =[{"name":"PR: ","id":"PR","data":[["PR",parseInt(sumPR)],["P1",parseInt(sumP1)],["P2",parseInt(sumP2)],["Q1",parseInt(sumQ1)],["Others",parseInt(sumothers)]]},
+  {"name":"New Citizen","id":"New Citizen","data":["New Citizen",parseInt(sumNewCitizen)]},
+  {"name":"Resident","id":"Resident","data":["Resident",parseInt(sumResident)]},
+];
+  
+  var levelData = [{"name":"PR","y":parseInt(sumPR + sumP1 + sumP2 + sumQ1 + sumothers),"drilldown":"PR"},{"name":"New Citizen","y":parseInt(sumNewCitizen),"drilldown":null},
+   {"name":"Resident","y":parseInt(sumResident),"drilldown":null}];
+  
+  var subtitle =  monthNames[currentmonth]+' '+currentYear;
+  
+      var viewHolder = elx.host.getViewHolder(viewId);
+  if(viewHolder){
+  var v = new elx.PieDrillHighchartView(view, levelData , drilldownSeries, subtitle);
+    viewHolder.setBaseView(v);
+    viewHolder.resize();
+  }
+  }
+  
+</div>

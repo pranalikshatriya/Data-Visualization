@@ -1,0 +1,629 @@
+<<<<<<<=view-json=
+{
+  "id":"StackChart",
+  "name":"StackChart",
+  "category":"Chart",
+  "default":{
+    "jsonClass":"View",
+    "elxType":"View",
+    "vtype":"bundle",
+    "state":"visible",
+    "isContainer":false,
+    "position":{
+      "jsonClass":"Position",
+      "elxType":"Position",
+      "height":"400",
+      "width":"750",
+      "zIndex":"auto"
+    },
+    "data":{
+      "jsonClass":"DataEmbedded",
+      "datasource":{
+        "jsonClass":"DataSource",
+        "name":"initData",
+        "stype":"Data",
+        "desc":"default data",
+        "schema":{
+          "jsonClass":"Schema",
+          "caseSensitive":false,
+          "columns":[{
+            "jsonClass":"SchemaColumn",
+            "name":"month_visited_date",
+            "dtype":"String",
+            "attrs":[{
+              "jsonClass":"PrimaryKey",
+              "name":"PrimaryKey"
+            }]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"hv_status",
+            "dtype":"Double"
+            
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"hv_status",
+            "dtype":"Double",
+            
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"year",
+            "dtype":"String",
+            
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"minThresh",
+            "dtype":"String",
+            
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"maxThresh",
+            "dtype":"String",
+            
+          }]
+        },
+        "data":{
+          "jsonClass":"DataRecords",
+          "records":[{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":2
+            },{
+              "jsonClass":"Field",
+              "value":1
+            },{
+              "jsonClass":"Field",
+              "value":"2013"
+            },{
+              "jsonClass":"Field",
+              "value":"80"
+            },{
+              "jsonClass":"Field",
+              "value":"90"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":3
+            },{
+              "jsonClass":"Field",
+              "value":5
+            },{
+              "jsonClass":"Field",
+              "value":"2014"
+            },{
+              "jsonClass":"Field",
+              "value":"80"
+            },{
+              "jsonClass":"Field",
+              "value":"90"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":5
+            },{
+              "jsonClass":"Field",
+              "value":3
+            },{
+              "jsonClass":"Field",
+              "value":"2014"
+            },{
+              "jsonClass":"Field",
+              "value":"80"
+            },{
+              "jsonClass":"Field",
+              "value":"90"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"1"
+            },{
+              "jsonClass":"Field",
+              "value":5
+            },{
+              "jsonClass":"Field",
+              "value":3
+            },{
+              "jsonClass":"Field",
+              "value":"2014"
+            },{
+              "jsonClass":"Field",
+              "value":"80"
+            },{
+              "jsonClass":"Field",
+              "value":"90"
+            }]
+          }]
+        }
+      },
+      "directive":""
+    },
+    "typeinfo":{
+      "jsonClass":"Bundle",
+      "type":"StackChart",
+      "data":{
+        "monthCol":"month_visited_date",
+        "visitedCol":"hv_status",
+        "notvisitedCol":"hv_status",
+          "yearCol":"year",
+        "minThreshCol":"minThresh",
+        "maxThreshCol":"maxThresh",
+      },
+      "chart":{
+        "width":"500",
+        "height":"510",
+        "centre":"450",
+        "margin":{
+          "b":"0",
+          "t":"50",
+          "l":"170",
+          "r":"20"
+        }
+      }
+    }
+  },
+  "includes":["/elx/lib/highcharts.js"],
+  "edit-section":[{
+    "id":"view",
+    "name":"View"
+  },{
+    "id":"data",
+    "name":"Data"
+  },{
+    "id":"StackChart",
+    "name":"StackChart"
+  },{
+    "id":"filters",
+    "name":"Filters"
+  }]
+}
+========
+<<<<<<<=edit-json=
+{
+  "jsonClass":"ViewSection",
+  "id":"StackChart",
+  "rows":[{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-height-label",
+      "type":"label",
+      "text":"Chart Height"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartHeight",
+      "type":"field",
+      "value":"${typeinfo.chartHight}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-width-label",
+      "type":"label",
+      "text":"Chart Width"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartWidth",
+      "type":"field",
+      "value":"${typeinfo.chartWidth}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-centre-label",
+      "type":"label",
+      "text":"Chart centre"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartCentre",
+      "type":"field",
+      "value":"${typeinfo.chartCentre}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-monthCol-label",
+      "type":"label",
+      "text":"month Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-monthCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.monthCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-visitedCol-label",
+      "type":"label",
+      "text":"visited Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-visitedCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.visitedCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-yearCol-label",
+      "type":"label",
+      "text":"Year Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-yearCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.yearCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-notvisitedCol-label",
+      "type":"label",
+      "text":"notvisited Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-notvisitedCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.notvisitedCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-minThreshCol-label",
+      "type":"label",
+      "text":"Min Threshold Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-minThreshCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.minThreshCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-maxThreshCol-label",
+      "type":"label",
+      "text":"Max Threshold Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-maxThreshCol",
+      "type":"select-schema-column",
+      "value":"${typeinfo.maxThreshCol}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginL-label",
+      "type":"label",
+      "text":"Left margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginL",
+      "type":"field",
+      "value":"${typeinfo.marginL}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginR-label",
+      "type":"label",
+      "text":"Right margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginR",
+      "type":"field",
+      "value":"${typeinfo.marginR}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginT-label",
+      "type":"label",
+      "text":"Top margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginT",
+      "type":"field",
+      "value":"${typeinfo.marginT}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginB-label",
+      "type":"label",
+      "text":"Bottom margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginB",
+      "type":"field",
+      "value":"${typeinfo.marginB}",
+      "readonly":false
+    }]
+  }]
+}
+========
+<<<<<<<=edit-js=
+elx.bundle.type.StackChart = {
+
+  	init : function(view) {
+		$("#typeinfo-chartHeight").val(view.typeinfo.chart.height);
+      	$("#typeinfo-chartWidth").val(view.typeinfo.chart.width);
+      $("#typeinfo-chartCentre").val(view.typeinfo.chart.centre);
+      	$("#typeinfo-marginR").val(view.typeinfo.chart.margin.r);
+      	$("#typeinfo-marginL").val(view.typeinfo.chart.margin.l);
+      	$("#typeinfo-marginT").val(view.typeinfo.chart.margin.t);
+      	$("#typeinfo-marginB").val(view.typeinfo.chart.margin.b);
+      
+      $("#typeinfo-monthCol").val(view.typeinfo.data.monthCol);
+      $("#typeinfo-visitedCol").val(view.typeinfo.data.visitedCol);
+      $("#typeinfo-notvisitedCol").val(view.typeinfo.data.notvisitedCol);
+       $("#typeinfo-yearCol").val(view.typeinfo.data.yearCol);
+        $("#typeinfo-minThreshCol").val(view.typeinfo.data.minThreshCol);
+        $("#typeinfo-maxThreshCol").val(view.typeinfo.data.maxThreshCol);
+      
+           
+      
+	},
+
+	validate : function(view) {
+		return true;
+	},
+
+	save : function(view) {
+		var cHeight = $("#typeinfo-chartHeight").val();
+		view.typeinfo.chart.height = cHeight;
+      	var cWidth = $("#typeinfo-chartWidth").val();
+		view.typeinfo.chart.width = cWidth;
+      var cCentre = $("#typeinfo-chartCentre").val();
+		view.typeinfo.chart.centre = cCentre;
+      
+      
+       
+      
+      	var monthCol = $("#typeinfo-monthCol").val();
+      	view.typeinfo.data.monthCol = monthCol;
+      
+      	var visitedCol = $("#typeinfo-visitedCol").val();
+      	view.typeinfo.data.visitedCol = visitedCol;
+      
+      var notvisitedCol = $("#typeinfo-notvisitedCol").val();
+      	view.typeinfo.data.notvisitedCol = notvisitedCol;
+      
+       var yearCol = $("#typeinfo-yearCol").val();
+      	view.typeinfo.data.yearCol = yearCol;
+      
+       var minThreshCol = $("#typeinfo-minThreshCol").val();
+      	view.typeinfo.data.minThreshCol = minThreshCol;
+      
+       var maxThreshCol = $("#typeinfo-maxThreshCol").val();
+      	view.typeinfo.data.maxThreshCol = maxThreshCol;
+      
+      	var mLeft =$("#typeinfo-marginL").val();
+    	view.typeinfo.chart.margin.l=mLeft;
+      
+      	var mRight = $("#typeinfo-marginR").val();
+      	view.typeinfo.chart.margin.r=mRight;
+      
+      	var mBottom = $("#typeinfo-marginL").val();
+      	view.typeinfo.chart.margin.l=mBottom;
+      	var mTop = $("#typeinfo-marginT").val();
+      	view.typeinfo.chart.margin.t=mTop;
+    }
+	
+}
+========
+<<<<<<<=view-html=
+<div id="${id}" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class='elx-script'>
+  var processeddata=[];
+  var categoryArray=[];
+  var seriesArrayvisited=[];
+  var seriesArraynotvisited=[];
+  var rawdata = ${data};
+  var processeddataTest=[];
+  var minThresholdArr=[];
+  var maxThresholdArr=[];
+  var previousPoint = null;
+   var copiedObject = {};
+  var groupdata;
+  var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+  rawdata.forEach(function(d){
+  minThresholdArr.push(d[view.typeinfo.data.minThreshCol]);
+  maxThresholdArr.push(d[view.typeinfo.data.maxThreshCol]);
+   processeddata.push({
+  "month1": d[view.typeinfo.data.monthCol],
+    "visited":d[view.typeinfo.data.visitedCol],
+   "notvisited":d[view.typeinfo.data.visitedCol],
+  "year":d[view.typeinfo.data.yearCol],
+  "month": monthNames[d[view.typeinfo.data.monthCol]]+'-'+d[view.typeinfo.data.yearCol]
+  })
+    });
+  processeddata = _(processeddata).chain()
+  .sortBy('month1')
+  .sortBy('year')
+  .value();
+  // console.info(processeddata);
+
+ 
+  // console.log( ' processeddataTest    ',JSON.stringify(processeddataTest));
+  
+  groupdata =_.groupBy(processeddata, function(d){ return d["month"];});
+    _.each(groupdata, function(t, unit){
+  categoryArray.push(_.first(_.pluck(t,'month')));
+  seriesArrayvisited.push(countVisited(_.pluck(t,'visited')));
+  seriesArraynotvisited.push(countNotVisited(_.pluck(t,'notvisited')));
+  
+  })
+  
+  // console.log( '   seriesArrayvisited     ', JSON.stringify(seriesArrayvisited));
+  //console.log( ' seriesArraynotvisited    ',JSON.stringify(seriesArraynotvisited));
+  // console.log( ' categoryArray    ',JSON.stringify(categoryArray));
+  
+  function countNotVisited(numbers){
+  	return _.reduce(numbers,function(total,x){return x==4||x==3||x==2||x==7 ? total+1 : total}, 0);
+  }
+  
+  function countVisited(numbers){
+  	return _.reduce(numbers,function(total,x){return x==5||x==1||x==6 ? total+1 : total}, 0);
+  }
+  
+  minThresholdArr = _.uniq(minThresholdArr);
+  maxThresholdArr = _.uniq(maxThresholdArr);
+  
+  
+ $(function () {
+   $("#${id}").highcharts({
+       chart: {
+           type: 'column'
+       },
+       credits: {
+            enabled: false
+           },
+       title: {
+           text: 'House Visit Statistic'
+       },
+       xAxis: {
+           categories: categoryArray
+       },
+       yAxis: {
+           min: 0,
+           title: {
+               text: 'Total House Visit'
+           },
+			plotLines: [{
+           color: '#FF0000',
+  			dashStyle: 'shortdash',
+           width: 2,
+           value: parseInt(minThresholdArr[0]),
+          label:{text:String(minThresholdArr[0])}
+       },
+  		{
+           color: '#000000',
+  			dashStyle: 'shortdash',
+           width: 2,
+           value: parseInt(maxThresholdArr[0]),
+  			label:{text:String(maxThresholdArr[0])}
+       }],
+  			
+       },
+       tooltip: {
+           pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+           shared: true
+       },
+       plotOptions: {
+           column: {
+               stacking: 'percent'
+           },
+  			
+  			series: {
+                 states: {
+                    hover: {
+                        enabled: true
+  
+                    }
+                },
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function() {
+                            // alert($(this.graphic.element).attr('fill'));
+  							var valuepass= this.category.split("-")
+  							var selection=monthNames.indexOf(valuepass[0]);
+                            //console.info(this.category);
+  							month= {jsonClass:"AndCriteria", criteria: [{jsonClass:"WhereCriteria",col: view.typeinfo.data.monthCol,wtype:"equal",value:selection}]}
+  							year= {jsonClass:"AndCriteria", criteria: [{jsonClass:"WhereCriteria",col: view.typeinfo.data.yearCol,wtype:"equal",value:valuepass[1]}]}
+  							a=[]
+  							a.push(month);
+  							a.push(year);
+ 							 
+                               
+                               var series = this.series.chart.series;
+                           
+  
+ 
+                              elx.dashboard.view.notifySelect(view.id, {type:"composite-where", sels: a});
+                            if (previousPoint) {
+                            previousPoint.update({ color: copiedObject.series.color});
+                                if( seriesArrayvisited[previousPoint.x] != 0 && seriesArraynotvisited[previousPoint.x]!=0)
+                                   {
+    
+                                      series[0].data[previousPoint.x].update ({ color :'#ff0000'});
+                                      series[1].data[previousPoint.x].update ({ color :'#00ff00'});
+                                   }
+  
+                            }
+                            previousPoint = this;
+                             copiedObject ={};
+                             copiedObject = _.clone(this);
+                                switch (this.series.color)
+                                {
+                                   case '#00ff00' :  this.update({ color: '#228b22' }); break;
+                                   case '#ff0000' :  this.update({ color: '#8b2323' }); break;
+  
+                                }
+                                 if( seriesArrayvisited[this.x] != 0 && seriesArraynotvisited[this.x]!=0)
+                                   {
+    
+                                     series[0].data[this.x].update ({ color : '#8b2323'});
+                                     series[1].data[this.x].update ({ color : '#228b22'});
+                                   }
+                              else{
+
+                                  } 
+                            
+                        }
+                    }
+                }
+            }
+       },
+  		colors: [
+        '#ff0000',
+        '#00ff00'
+    	],
+        series: [{
+           name: 'Not Visited',
+           data: seriesArraynotvisited,
+           color : '#ff0000'
+       }, {
+           name: 'Visited',
+           data: seriesArrayvisited,
+           color : '#00ff00'
+       }]
+   });
+});
+</div>
+========

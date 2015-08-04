@@ -1,0 +1,696 @@
+<<<<<<<=view-json=
+{
+  "id":"FB_District",
+  "name":"FB_District",
+  "category":"Chart",
+  "default":{
+    "jsonClass":"View",
+    "elxType":"View",
+    "vtype":"bundle",
+    "state":"visible",
+    "isContainer":false,
+    "position":{
+      "jsonClass":"Position",
+      "elxType":"Position",
+      "height":"400",
+      "width":"900",
+      "zIndex":"auto"
+    },
+    "data":{
+      "jsonClass":"DataEmbedded",
+      "datasource":{
+        "jsonClass":"DataSource",
+        "name":"initData",
+        "stype":"Data",
+        "desc":"default data",
+        "schema":{
+          "jsonClass":"Schema",
+          "caseSensitive":false,
+          "columns":[{
+            "jsonClass":"SchemaColumn",
+            "name":"level1",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"level2",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"level3",
+            "dtype":"String",
+            "attrs":[]
+          },{
+            "jsonClass":"SchemaColumn",
+            "name":"level4",
+            "dtype":"String",
+            "attrs":[]
+          }]
+        },
+        "data":{
+          "jsonClass":"DataRecords",
+          "records":[{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            }]
+          },{
+            "jsonClass":"Record",
+            "fields":[{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            },{
+              "jsonClass":"Field",
+              "value":"0"
+            }]
+          }]
+        }
+      },
+      "directive":""
+    },
+    "typeinfo":{
+      "jsonClass":"Bundle",
+      "type":"FB_District",
+      "data":{
+        "level1Col":"level1",
+        "level2Col":"level2",
+        "level3Col":"level3",
+        "level4Col":"level4"
+      },
+      "chart":{
+        "width":"500",
+        "height":"610",
+        "margin":{
+          "b":"30",
+          "t":"30",
+          "l":"70",
+          "r":"80"
+        }
+      }
+    }
+  },
+  "includes":["/elx/lib/d3.v3.js","/elx/lib/FederalBudget-District.js"],
+  "edit-section":[{
+    "id":"view",
+    "name":"View"
+  },{
+    "id":"data",
+    "name":"Data"
+  },{
+    "id":"FB_District",
+    "name":"FB_District"
+  }]
+}
+========
+<<<<<<<=edit-json=
+{
+  "jsonClass":"ViewSection",
+  "id":"FB_District",
+  "rows":[{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-height-label",
+      "type":"label",
+      "text":"Chart Height"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartHeight",
+      "type":"field",
+      "value":"${typeinfo.chartHeight}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-width-label",
+      "type":"label",
+      "text":"Chart Width"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-chartWidth",
+      "type":"field",
+      "value":"${typeinfo.chartWidth}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level1Col-label",
+      "type":"label",
+      "text":"Level1 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level1Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level1Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level2Col-label",
+      "type":"label",
+      "text":"Level2 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level2Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level2Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level3Col-label",
+      "type":"label",
+      "text":"level3 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level3Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level3Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-level4Col-label",
+      "type":"label",
+      "text":"level4 Column"
+    },{
+      "jsonClass":"SchemaColumnSelect",
+      "id":"typeinfo-level4Col",
+      "type":"select-schema-column",
+      "value":"${typeinfo.level4Col}"
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginL-label",
+      "type":"label",
+      "text":"Left margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginL",
+      "type":"field",
+      "value":"${typeinfo.marginL}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginR-label",
+      "type":"label",
+      "text":"Right margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginR",
+      "type":"field",
+      "value":"${typeinfo.marginR}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginT-label",
+      "type":"label",
+      "text":"Top margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginT",
+      "type":"field",
+      "value":"${typeinfo.marginT}",
+      "readonly":false
+    }]
+  },{
+    "jsonClass":"Row",
+    "cols":[{
+      "jsonClass":"Label",
+      "id":"typeinfo-marginB-label",
+      "type":"label",
+      "text":"Bottom margin"
+    },{
+      "jsonClass":"Field",
+      "id":"typeinfo-marginB",
+      "type":"field",
+      "value":"${typeinfo.marginB}",
+      "readonly":false
+    }]
+  }]
+}
+========
+<<<<<<<=edit-js=
+elx.bundle.type.FB_District = {
+
+  	init : function(view) {
+		$("#typeinfo-chartHeight").val(view.typeinfo.chart.height);
+      	$("#typeinfo-chartWidth").val(view.typeinfo.chart.width);
+   
+      	$("#typeinfo-marginR").val(view.typeinfo.chart.margin.r);
+      	$("#typeinfo-marginL").val(view.typeinfo.chart.margin.l);
+      	$("#typeinfo-marginT").val(view.typeinfo.chart.margin.t);
+      	$("#typeinfo-marginB").val(view.typeinfo.chart.margin.b);
+      
+       
+      $("#typeinfo-level1Col").val(view.typeinfo.data.level1Col);
+      $("#typeinfo-level2Col").val(view.typeinfo.data.level2Col);
+    
+      $("#typeinfo-level3Col").val(view.typeinfo.data.levle3Col);
+      $("#typeinfo-level4Col").val(view.typeinfo.data.level4Col);
+    
+	},
+
+	validate : function(view) {
+		return true;
+	},
+
+	save : function(view) {
+		var cHeight = $("#typeinfo-chartHeight").val();
+		view.typeinfo.chart.height = cHeight;
+      	var cWidth = $("#typeinfo-chartWidth").val();
+		view.typeinfo.chart.width = cWidth;
+      
+      
+      	var level1Col = $("#typeinfo-level1Col").val();
+      	view.typeinfo.data.level1Col = level1Col;
+      
+        var level2Col = $("#typeinfo-level2Col").val();
+      	view.typeinfo.data.level2Col = level2Col;
+        
+       
+      var level3Col = $("#typeinfo-level3Col").val();
+      	view.typeinfo.data.level3Col = level3Col;
+      
+        var level4Col = $("#typeinfo-level4Col").val();
+      	view.typeinfo.data.level4Col = level4Col;
+      
+        
+      
+      	var mLeft =$("#typeinfo-marginL").val();
+    	view.typeinfo.chart.margin.l=mLeft;
+      
+      	var mRight = $("#typeinfo-marginR").val();
+      	view.typeinfo.chart.margin.r=mRight;
+      
+      	var mBottom = $("#typeinfo-marginL").val();
+      	view.typeinfo.chart.margin.l=mBottom;
+      	var mTop = $("#typeinfo-marginT").val();
+      	view.typeinfo.chart.margin.t=mTop;
+    }
+	
+}
+========
+<<<<<<<=view-html=
+<style type='text/css'>
+body {
+    overflow: auto;
+    margin: 0;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica;
+}
+
+#chart, #header, #footer {
+    position: absolute;
+    top: 0;
+}
+
+#header, #footer {
+    z-index: 1;
+    display: block;
+    font-size: 36px;
+    font-weight: 300;
+    text-shadow: 0 1px 0 #fff;
+}
+
+#header.inverted, #footer.inverted {
+    color: #fff;
+    text-shadow: 0 1px 4px #000;
+}
+
+#header {
+    top: 80px;
+    left: 140px;
+    width: 1000px;
+}
+
+#footer {
+    top: 680px;
+    right: 140px;
+    text-align: right;
+}
+
+rect {
+    fill: none;
+    pointer-events: all;
+}
+
+pre {
+    font-size: 18px;
+}
+
+line {
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+.string, .regexp {
+    color: #f39;
+}
+
+.keyword {
+    color: #00c;
+}
+
+.comment {
+    color: #777;
+    font-style: oblique;
+}
+
+.number {
+    color: #369;
+}
+
+.class, .special {
+    color: #1181B8;
+}
+
+a:link, a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #666;
+}
+
+.hint {
+    position: absolute;
+    right: 0;
+    width: 1280px;
+    font-size: 12px;
+    color: #999;
+}
+
+
+.node circle {
+    cursor: pointer;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    font-size: 11px;
+}
+
+path.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+div.tooltip {
+    //position: absolute;			/* reference for measurement */
+    text-align: left;
+    left:-7px;
+    top: 12px;
+    pointer-events: none;			/* 'none' tells the mouse to ignore the rectangle */
+    background: #FFFFEF;
+     border: 1px solid #D5D5D5;
+    font-family: arial,helvetica,sans-serif;
+    position: absolute;
+    font-size: 1.1em;
+    color: #333;
+    border-radius: 1px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    box-shadow: 0 0px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0px 0px rgba(0,0,0,0.4);
+    border:1px solid rgba(200,200,200,0.85);
+}
+
+div.header {
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 2px;
+    color:#666;
+    text-align:center;
+
+}
+
+div.header-rule{
+    height:1px;
+    margin:1px auto 3px;
+    margin-top:7px;
+    margin-bottom:7px;
+    background:#ddd;
+    width:125px;
+}
+
+div.header1{
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: 2px;
+    color:#333;
+    text-align:center;
+}
+
+div.header2{
+    color:#000;
+    font-size: 11px;
+    text-align:center;
+    font-style:italic;
+}
+
+div.header3 {
+    text-align: left;
+    font-size: 11px;
+    /*  width:170px;*/
+    text-align:center;
+}
+
+/* Navigation */
+.nytg-navBar {
+    border-top: solid 1px #DDD;
+    padding: 15px 0 0;
+    margin: 0 10px;
+    z-index: 100;
+    position: absolute;
+    width: 950px;
+}
+
+
+.nytg-navigation {
+
+}
+.nytg-navigation li {
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+    padding: 10px 18px;
+    border-top: solid 1px #CCC;
+    border-bottom: solid 1px #CCC;
+    border-left: solid 1px #CCC;
+    background: #f9f9f9;
+    margin: 0 0;
+}
+
+.nytg-navigation li:first-of-type{
+    border-radius: 4px 0 0 4px;
+}
+.nytg-navigation li:last-of-type{
+
+    border-right: solid 1px #CCC;
+    border-radius: 0 4px 4px 0;
+}
+.nytg-navigation li.selected {
+    color: #000;
+    background: #e9e9e9;
+    border-color: #AAA;
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.nytg-navigation li.selected {
+    color: #000;
+    background: #e9e9e9;
+    border-color: #AAA;
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+div.selected {
+    color: #000;
+    background: #e9e9e9;
+    border-color: #AAA;
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
+    padding-bottom:10px;
+}
+
+
+
+
+</style>
+<div id='chartBody'></div>   
+<div class='elx-script'>
+ var div =$("#${id}");
+var view = elx.host.getViewById("${id}");
+ var viewHolder = elx.host.getViewHolder("${id}");
+   var vSel = elx.ClientActionAPI.getViewSelection("v-4");
+  
+  console.log( "   vSel     ", vSel);
+  var dataone = JSON.stringify({selection:vSel, jsonClass:"TreeInfo"});
+  console.log( "   dataone     ", dataone);
+  
+  
+  if(viewHolder){
+  
+  $.ajax({
+                    type: "POST", 	
+                     url:"/elx/do/"+elx.parameters.domain+"/adhoc/capris/get/citizen-info-tree",
+                    data: dataone,
+                    contentType: "application/json",	
+                    dataType:"json", 
+    
+                    success: function (result) {
+                       
+                      	      if (result.code === "success") {
+	 			
+		
+        var root = calculateroot(result.root);
+    var v = new elx.BudgetChartDistrict(div, view, {
+     dataone: root,
+      margin:{top:10,right:10,bottom:10,left:10},
+  originaldata : result.root
+   
+    });
+				
+
+	           }
+                    },
+                         error: function (err) {
+                         console.log("Error in ajax call ! " + err.statusText);
+                         }
+                });
+  
+  
+  
+  
+  
+ 
+  //viewHolder.setBaseView(v);
+  // viewHolder.resize();
+  } 
+
+
+function calculateroot(data)
+  {
+  
+  
+  var root =[];
+  data.children.forEach(function(d){
+    if(d.children!=null)
+  {
+  
+  d.children.forEach(function (a){
+  if(a.children!=null)
+  {
+   a.children.forEach(function (e){
+   if(e.children!=null)
+  {
+   e.children.forEach(function (f){
+  //var p = ((parseInt(a.total)%7==0) ? (parseInt(a.total)/7) : (7-(parseInt(a.total)%7)+Math.floor(parseInt(a.total)/7)));
+  // var x = ((parseInt(d.total)%7==0) ? (parseInt(d.total)/7) : (7-(parseInt(d.total)%7)+Math.floor(parseInt(d.total)/7)));
+  if(d.name == null){d.name = "Unknown";}
+   if(a.name == null){a.name = "Unknown";}
+   if(e.name == null){e.name = "Unknown";}
+   if(f.name == null){f.name = "Unknown";}
+   root.push({
+  level1 :d.name +'-'+ d.total,
+  level2 : a.name +'-'+a.total,
+  level3 : e.name+'-'+e.total,
+  level4 : f.name +'-'+String(f.total),
+  Federal: String(f.total)
+  }) })}})
+  }
+  })
+
+  }
+  })
+  
+ 
+  return root;
+  
+  }
+  
+
+  
+</div>
+========

@@ -1,0 +1,236 @@
+<div class='elx-datahtml-script'>
+	var parent = $("#"+viewId);
+    var view = elx.host.getViewById(viewId);
+    var data = parent.data("data");
+  
+  var rawdatacdd = []; 
+  var rawdatacs =[];
+  var rawdatadiv =[];
+  var UniqueNames=[];
+  var series_data =[];
+  var visitseriesarray=[];
+  var divisionseriesarray=[];
+  var visit_series=[];
+  var division_series=[];
+  var datearray=[];
+  var datearraycs=[];
+  var datearraycdd=[];
+   var csname;
+  var datasetdiv;
+  var totalcount=0;
+   var currentdate = new Date();
+  var currentmonth = currentdate.getMonth() ;
+  var currentYear = currentdate.getFullYear();
+  var requiredDateArr =[];
+  var monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  var startmonth;
+  var endmonth;
+  var startyear = currentYear ;
+  var endyear;
+  if(data!=null){
+  for(var i =0;i < 3 ; i++)
+  {
+   if(currentmonth >= 1)
+  {
+   requiredDateArr.push( Date.UTC(currentYear,currentmonth, 1));
+   endyear = currentYear;
+   currentmonth = currentmonth -1;
+  }else{
+  if(currentmonth == 0){
+   requiredDateArr.push( Date.UTC(currentYear,currentmonth, 1)); 
+   currentmonth = 11; 
+   currentYear = currentYear -1;
+   endyear = currentYear;
+  }
+  }
+  
+  }
+  requiredDateArr = requiredDateArr.sort();
+  data.forEach(function(a) {
+
+  for (var i =0; i < requiredDateArr.length ; i++)
+  {
+  if((requiredDateArr[i]) == (Date.UTC(a["s_citizen_summary.year"],parseInt(a["s_citizen_summary.month"])-1,1)))
+  {
+  rawdatacdd.push({
+ 
+  "visited_date":requiredDateArr[i],
+  "cdd_name":a["c_cdd_cs_div.cdd_code"],
+  "cdd_count":parseInt(a["s_citizen_summary.house_visit_activity_count"])
+  });
+  
+  
+    rawdatacs.push({
+  "visited_date":requiredDateArr[i],
+  "cs_name":a["c_cdd_cs_div.cs_code"],
+  "cs_count":parseInt(a["s_citizen_summary.house_visit_activity_count"]),
+  "cdd_name":a["c_cdd_cs_div.cdd_code"]
+ 
+  });
+  
+  rawdatadiv.push({
+  "visited_date":requiredDateArr[i],
+   "div_name":a["s_citizen_summary.div_code"],
+  "div_count":parseInt(a["s_citizen_summary.house_visit_activity_count"]),
+  "cs_name":a["c_cdd_cs_div.cs_code"]
+  });
+  }
+  }
+  });  
+
+  
+var lookup = {};
+var items = rawdatacdd;
+var UniqueCDD = [];
+
+for (var item, i = 0; item = items[i++];) {
+  var name = item.cdd_name;
+
+  if (!(name in lookup)) {
+    lookup[name] = 1;
+    UniqueCDD.push(name);
+  }
+}
+ 
+
+   for(var n =0; n < UniqueCDD.length ;n++){
+ 
+
+   var datasetcs = _.where(rawdatacs, {"cdd_name": UniqueCDD[n] });
+   visit_series=[];
+   var lookupcs = {};
+   var itemscs = datasetcs;
+   var UniqueCS = [];
+
+for (var item, i = 0; item = itemscs[i++];) {
+  var name = item.cs_name;
+
+  if (!(name in lookupcs)) {
+    lookupcs[name] = 1;
+    UniqueCS.push(name);
+  }
+}
+  
+   for(var j =0; j< UniqueCS.length ;j++){
+  
+  
+    datasetdiv = _.where(rawdatadiv, {"cs_name": UniqueCS[j]});
+ datasetdiv.sort(function(a, b) {
+    return parseFloat(a.visited_date) - parseFloat(b.visited_date);
+});
+  division_series =[];
+  datasetdiv.forEach(function (u) {
+  datearray=[];
+  var hasMatchcdd =false;
+  for (var indexcdd = 0; indexcdd < division_series.length; ++indexcdd) {
+  var uniquenamecdd = division_series[indexcdd];
+  
+  
+ if(String(uniquenamecdd.name) == String(u.div_name)){hasMatchcdd = true;break;}}
+ if(hasMatchcdd == false){
+  _.where(datasetdiv,{"div_name":u.div_name}).forEach(function(h){
+  datearray.push({"x":h.visited_date,"y":h.div_count});
+  });
+  division_series.push({name : u.div_name,data : datearray});
+  
+     
+  }
+  });
+  
+   
+ 
+  datearraycs=[];
+   var datacsfilter =_.where(datasetcs, {"cs_name": UniqueCS[j]}); 
+   datacsfilter.sort(function(a, b) {
+    return parseFloat(a.visited_date) - parseFloat(b.visited_date);
+});
+   datacsfilter.forEach(function (d){
+  datearraycs.push({"x": d.visited_date,"y":d.cs_count,"division_series":division_series});
+})
+
+    
+
+   var nestCSdata = d3.nest()
+  .key(function(d) { return d.x;})
+  .rollup(function(d) { 
+   return d3.sum(d, function(g) {return g.y; });
+  })
+  .entries(_.flatten(datearraycs));
+  
+
+  
+  var newdatearraycs =[];
+  nestCSdata.forEach(function (p){ newdatearraycs.push({"x": p.key,"y":p.values,"division_series":division_series});})
+  visit_series.push({name :  UniqueCS[j],data : newdatearraycs});
+  } 
+  
+  var filtercdddata = _.where(rawdatacdd, {"cdd_name": UniqueCDD[n] });
+   filtercdddata.sort(function(a, b) {
+    return parseFloat(a.visited_date) - parseFloat(b.visited_date);
+});
+  datearraycdd=[];
+  filtercdddata.forEach(function (w){
+  datearraycdd.push({"x": w.visited_date,"y":w.cdd_count,"visit_series":visit_series});
+
+  })
+ 
+  
+  var nestCDDdata = d3.nest()
+  .key(function(d) { return d.x;})
+      .rollup(function(d) { 
+   return d3.sum(d, function(g) {return g.y; });
+  })
+  .entries(_.flatten(datearraycdd));
+  
+  
+  
+  var newdatearraycdd =[];
+  nestCDDdata.forEach(function (p){ totalcount = totalcount+ (p.values);newdatearraycdd.push({"x": p.key,"y":p.values,"visit_series":visit_series});})
+  series_data.push({name : UniqueCDD[n],data : newdatearraycdd}); 
+  }
+  
+   
+ var lookupdate = {};
+var itemsdate = rawdatacdd;
+var Uniquedate = [];
+var dateArr =[];
+for (var item, i = 0; item = itemsdate[i++];) {
+  var name = item.visited_date;
+
+  if (!(name in lookupdate)) {
+    lookupdate[name] = 1;
+    Uniquedate.push({"x":name,"y": 90});
+  }
+}
+ Uniquedate=[];
+
+var date = new Date(requiredDateArr[0]);
+startmonth = date.getMonth();
+
+var datelast = new Date(requiredDateArr[2]);
+endmonth = datelast.getMonth();
+
+    var app_colors = [
+              '#38a3d4', 
+              '#79ce5b', 
+              '#f28359', 
+              '#efaa4f',
+               '#663399',
+               '#000000',
+                '#ff0000',
+                 '#006600'];
+  
+  var title = monthNames[startmonth]+' '+startyear+'  To  '+ monthNames[endmonth] +' '+ endyear;
+  
+
+  
+  
+    var viewHolder = elx.host.getViewHolder(viewId);
+  if(viewHolder){
+  var v = new elx.LineDrillHighchartView(view, series_data, visit_series , division_series, title,app_colors,totalcount);
+    viewHolder.setBaseView(v);
+    viewHolder.resize();
+  }
+  }
+  	
+</div>

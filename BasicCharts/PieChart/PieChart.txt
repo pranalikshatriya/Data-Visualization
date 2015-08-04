@@ -1,0 +1,47 @@
+<table class='ui-widget ui-widget-content' style='width:100%'></table>
+<div class='elx-datahtml-script'>
+	var parent = $("#"+viewId)
+    var data = parent.data("data");
+  
+  var processedData =[];
+  var dataArray =[];
+  var finalArr =[];
+  var nameArr=[];
+
+  if( data != null){
+   data.forEach( function (d){
+  processedData.push({
+  "Type": d["c_solemniser.solemniser_type"],
+  "Active": d["c_solemniser.active"],
+  "Name":  d["c_solemniser.solemniser_name"]
+});
+});
+  var rawdata = _.where(processedData, {"Active" : true});
+  rawdata.forEach(function (d){
+    if ($.inArray(d.Name, nameArr)==-1) {
+  nameArr.push({key : d.Type,value : d.Name});
+  
+    }
+});
+  var groupdata = d3.nest()
+    .key(function(d) { return d.key; })
+     .rollup(function(d) { return _.size(d); })
+       .entries(nameArr);
+  groupdata.forEach(function(d){
+  dataArray.push({name: d.key, y:d.values,sliced: true,selected: true }); });
+ var length = dataArray.length;
+for (var i=0; i< length - 1 ; i++) {
+      dataArray[i].sliced = "false";
+      dataArray[i].selected = "false";
+    break;
+  
+}
+  var title =  "Solemniser Type";
+    var viewHolder = elx.host.getViewHolder(viewId);
+  if(viewHolder){
+  var v = new elx.PieHighchartView(view, dataArray, title);
+    viewHolder.setBaseView(v);
+    viewHolder.resize();
+  }
+  }
+</div>
